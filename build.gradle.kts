@@ -5,7 +5,7 @@ plugins {
     kotlin("jvm") version "2.2.10"
 }
 
-val kritter = "2.0.0-36"
+val kritter = "2.0.0-82-local.1"
 
 repositories {
     cloche.librariesMinecraft()
@@ -13,6 +13,7 @@ repositories {
     mavenCentral()
 
     maven("https://thedarkcolour.github.io/KotlinForForge/")
+    maven("https://maven.is-immensely.gay/releases")
 
     cloche {
         main()
@@ -96,29 +97,6 @@ cloche {
         }
     }
 
-    fabric("fabric:1.21.11") {
-        dependsOn(fabric)
-        loaderVersion = "0.18.6"
-        minecraftVersion = "1.21.11"
-
-        metadata {
-            entrypoint("main") {
-                adapter.set("kotlin")
-                value.set("dev.mayaqq.testmod.TestmodFabric")
-            }
-        }
-
-        dependencies {
-            modImplementation("invoke.kitty.kritter:kritter-1.21.11-fabric:$kritter")
-        }
-
-        includedClient()
-        runs {
-            client()
-            server()
-        }
-    }
-
     forge("forge:1.20.1") {
         metadata {
             modLoader = "javafml"
@@ -151,7 +129,7 @@ cloche {
         minecraftVersion = "1.21.1"
 
         dependencies {
-            modImplementation("invoke.kitty.kritter:kritter-1.21.1-forge:$kritter")
+            modImplementation("invoke.kitty.kritter:kritter-1.21.1-neoforge:$kritter")
             //modImplementation("thedarkcolour:kotlinforforge:5.11.0")
         }
 
@@ -161,26 +139,6 @@ cloche {
         }
     }
 
-    neoforge("neoforge:1.21.11") {
-        metadata {
-            modLoader = "javafml"
-            loaderVersion("1")
-            blurLogo = false
-        }
-        dependsOn(neoforge)
-        loaderVersion = "21.11.42"
-        minecraftVersion = "1.21.11"
-
-        dependencies {
-            modImplementation("invoke.kitty.kritter:kritter-1.21.11-forge:$kritter")
-            //modImplementation("thedarkcolour:kotlinforforge:6.2.0")
-        }
-
-        runs {
-            client()
-            server()
-        }
-    }
 }
 kotlin {
 
