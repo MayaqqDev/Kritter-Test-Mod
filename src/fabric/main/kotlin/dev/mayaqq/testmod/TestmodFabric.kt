@@ -4,6 +4,6 @@ import net.fabricmc.api.ModInitializer
 
 object TestmodFabric : ModInitializer {
     override fun onInitialize() {
-        Testmod.init()
+        //Testmod.init()
     }
 }
